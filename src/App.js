@@ -6,17 +6,25 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentCard: '0-0'
+      currentCard: '0-0',
+      currentInput: null
     }
+  }
+
+  static getDerivedStateFromProps(props, state) {
+
   }
 
   renderCard = () => {
     const { currentCard } = this.state;
 
     return (
-      <span>
-        {sifangwu[currentCard]?.text}
-      </span>
+      <div>
+        <span>
+          {sifangwu[currentCard]?.text}
+        </span>
+        <button onClick={ () => this.setState({ currentCard: sifangwu[currentCard]?.paths.NEXT })}> > </button>
+      </div>
     );
   }
 
