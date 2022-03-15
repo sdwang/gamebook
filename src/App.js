@@ -6,8 +6,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentCard: '0-0',
-      currentInput: null
+      currentCardId: '0-0'
     }
   }
 
@@ -16,14 +15,16 @@ class App extends React.Component {
   }
 
   renderCard = () => {
-    const { currentCard } = this.state;
+    const { currentCardId } = this.state;
+    const currentCard = sifangwu[currentCardId];
+    const { text, input, paths } = currentCard;
 
     return (
       <div>
         <span>
-          {sifangwu[currentCard]?.text}
+          {text}
         </span>
-        <button onClick={ () => this.setState({ currentCard: sifangwu[currentCard]?.paths.NEXT })}> > </button>
+        { input.type === 'BUTTONS' && input.data.map(button => <button onClick={ () => this.setState({ currentCardId: paths[button.value] })}>{button.label}</button>)}
       </div>
     );
   }

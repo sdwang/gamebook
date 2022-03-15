@@ -1,31 +1,47 @@
 {
   "0-0": {
-    "text": "The sun is hot. The endless desert stretches endlessly. You are running and you don't remember why. In your hands, you are holding a heavy tome. Its cracked, hide-bound cover is unnaturally cold, the only cold thing in this dusty landscape.\nBehind you, two men are running towards you with swords drawn. They look angry.",
+    "text": "The sun is hot. The endless desert stretches endlessly. You are running and you don’t remember why. In your hands, you are holding a heavy tome. Its cracked, hide-bound cover is unnaturally cold, the only cold thing in this dusty landscape.\nBehind you, two men are running towards you with swords drawn. They look angry.",
     "input": {
       "type": "BUTTONS",
       "data": [
         {
           "label": ">",
-          "onClick": "NEXT"
+          "value": "a"
         }
       ]
     },
     "paths": {
-      "NEXT": "0-1"
+      "a": "0-1"
     }
   },
   "0-1": {
-    "text": "You realize not only do you not remember why you were running, but you also don't remember who you are. You don't remember your name or your family and friends or where you were born. You don't remember anything before the chase.",
+    "text": "You realize not only do you not remember why you were running, but you also don’t remember who you are. You don’t remember your name or your family and friends or where you were born. You don’t remember anything before the chase.",
     "input": {
       "type": "BUTTONS",
       "data": [
         {
           "label": ">",
-          "onClick": "NEXT"
+          "value": "a"
         }
       ]
     },
     "paths": {
+      "a": "0-2"
+    }
+  },
+  "0-2": {
+    "text": "You concentrate and an old memory surfaces. You are in school and the teacher has separated the students into different tiers according to intelligence. You can’t remember what tier you were placed in but you must have been in…",
+    "input": {
+      "type": "BUTTONS",
+      "data": [
+        {
+          "label": ">",
+          "value": "a"
+        }
+      ]
+    },
+    "paths": {
+      "a": "0-2"
     }
   }
 }
