@@ -1,14 +1,23 @@
 import React from "react";
 
-function Button({ path, label, newStats, next }) {
+function Button({ path, label, statActions, updateStats, next }) {
   return (
-    <button onClick={ () => next(path)}>{label}</button>
+    <button
+      onClick={ () => {
+        if (statActions) {
+          updateStats(statActions);
+        }
+        next(path);
+      } }
+    >
+      {label}
+    </button>
   );
 }
 
-function Buttons({ buttons, next }) {
+function Buttons({ buttons, next, updateStats }) {
   return (
-    buttons.map((button, i) => <Button key={ i } { ...button } next={ next } />)
+    buttons.map((button, i) => <Button key={ i } { ...button } next={ next } updateStats={ updateStats }/>)
   );
 }
 
