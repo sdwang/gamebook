@@ -5,6 +5,7 @@ import sifangwu from './data/sifangwu.json';
 class App extends React.Component {
   constructor(props) {
     super(props);
+    this.stats = sifangwu.startingStats;
     this.state = {
       currentCardId: '0-0'
     }
@@ -16,7 +17,7 @@ class App extends React.Component {
 
   renderCard = () => {
     const { currentCardId } = this.state;
-    const currentCard = sifangwu[currentCardId];
+    const currentCard = sifangwu.cards[currentCardId];
     const { text, input, paths } = currentCard;
 
     return (
