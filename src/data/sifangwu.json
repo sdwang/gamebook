@@ -98,7 +98,52 @@
     },
     "0-1-0-1": {
       "text": [
-        "You disarm the first swordsman and cut him down with his own blade. The second attacker slashes at you, but you easily deflect his strikes. You quickly see an opening in his defenses, and drive your new sword into his heart."
+        "You disarm the first swordsman and cut him down with his own blade."
+      ],
+      "input": {
+        "type": "BUTTONS",
+        "props": {
+          "buttons": [
+            {
+              "label": "Fight the second swordsman",
+              "path": "0-1-0-1-0"
+            }
+          ]
+        }
+      }
+    },
+    "0-1-0-1-0": {
+      "text": [
+        "Your new sword feels natural in your hands.",
+        "Items can help increase the margin of error."
+      ],
+      "input": {
+        "type": "TARGET",
+        "props": {
+          "failurePath": "0-1-0-0-0",
+          "successPath": "0-1-0-1-1"
+        }
+      }
+    },
+    "0-1-0-0-0": {
+      "text": [
+        "The second attacker slashes at you, but you easily deflect his strikes. You quickly see an opening in his defenses, and lunge to attack. The opening was a trap. You are too slow. You feel the attacker’s blade slide into your chest."
+      ],
+      "input": {
+        "type": "BUTTONS",
+        "props": {
+          "buttons": [
+            {
+              "label": "Everything fades to black",
+              "path": "0"
+            }
+          ]
+        }
+      }
+    },
+    "0-1-0-1-1": {
+      "text": [
+        "The second attacker slashes at you, but you easily deflect his strikes. You quickly see an opening in his defenses, and drive your sword into his heart."
       ],
       "input": {
         "type": "BUTTONS",
