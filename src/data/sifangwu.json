@@ -106,7 +106,15 @@
           "buttons": [
             {
               "label": "Fight the second swordsman",
-              "path": "0-1-0-1-0"
+              "path": "0-1-0-1-0",
+              "newStats": {
+                "type": "ADD",
+                "path": ["items", "sword"],
+                "item": {
+                  "name": "Sword",
+                  "quantity": 1
+                }
+              }
             }
           ]
         }

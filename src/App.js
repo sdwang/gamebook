@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import Target from './components/Target';
+import Buttons from './components/Buttons';
 import sifangwu from './data/sifangwu.json';
 
 class App extends React.Component {
@@ -12,6 +13,10 @@ class App extends React.Component {
     }
   }
 
+  setNextCard = (nextCardId) => {
+    this.setState({ currentCardId: nextCardId });
+  }
+
   renderCard = () => {
     const { currentCardId } = this.state;
     const currentCard = sifangwu.cards[currentCardId];
@@ -20,8 +25,8 @@ class App extends React.Component {
     return (
       <div>
         { text.map((str, i) => <div key={ i }>{ str }</div>)}
-        { input.type === 'BUTTONS' && input.props.buttons.map((button, i) => <button key={ i } onClick={ () => this.setState({ currentCardId: button.path })}>{button.label}</button>)}
-        { input.type === 'TARGET' && <Target { ...input.props } next={ nextCardId => { this.setState({ currentCardId: nextCardId })} }/>}
+        { input.type === 'BUTTONS' && <Buttons { ...input.props } next={ this.setNextCard }/> }
+        { input.type === 'TARGET' && <Target { ...input.props } next={ this.setNextCard }/> }
       </div>
     );
   }
