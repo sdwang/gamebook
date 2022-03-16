@@ -8,7 +8,7 @@ function Button({ path, label, newStats, next }) {
 
 function Buttons({ buttons, next }) {
   return (
-    buttons.map((button, i) => <Button { ...button } next={ next } />)
+    buttons.map((button, i) => <Button key={ i } { ...button } next={ next } />)
   );
 }
 

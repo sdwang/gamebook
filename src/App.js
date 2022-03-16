@@ -32,9 +32,12 @@ class App extends React.Component {
   }
 
   renderToolbar = () => {
+    const { stats } = this.state;
+    const { items } = stats;
     return (
-      <div>
+      <div className='toolbar'>
         <button onClick={ () => this.restart() }>Start Over</button>
+        { Object.values(items).map((item, i) => <div key={ i }>{ item.name }</div>) }
       </div>
     );
   }

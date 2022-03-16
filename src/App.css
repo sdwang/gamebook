@@ -16,3 +16,7 @@
 .App-link {
   color: #61dafb;
 }
+
+.toolbar {
+  border: 5px solid black;
+}
