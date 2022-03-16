@@ -1,6 +1,6 @@
 import React from "react";
 
-function Button({ path, label, next }) {
+function Button({ path, label, newStats, next }) {
   return (
     <button onClick={ () => next(path)}>{label}</button>
   );

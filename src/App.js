@@ -7,9 +7,9 @@ import sifangwu from './data/sifangwu.json';
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.stats = sifangwu.startingStats;
     this.state = {
-      currentCardId: '0-0'
+      currentCardId: '0-0',
+      stats: sifangwu.startingStats
     }
   }
 
@@ -31,9 +31,22 @@ class App extends React.Component {
     );
   }
 
+  renderToolbar = () => {
+    return (
+      <div>
+        <button onClick={ () => this.restart() }>Start Over</button>
+      </div>
+    );
+  }
+
+  restart = () => {
+    this.setState({ currentCardId: '0-0', stats: sifangwu.startingStats });
+  }
+
   render() {
     return (
       <div className="App">
+        { this.renderToolbar() }
         { this.renderCard() }
       </div>
     );
