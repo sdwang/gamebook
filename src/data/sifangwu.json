@@ -18,15 +18,14 @@
       ],
       "input": {
         "type": "BUTTONS",
-        "data": [
-          {
-            "label": "OK",
-            "value": "a"
-          }
-        ]
-      },
-      "paths": {
-        "a": "0-1"
+        "props": {
+          "buttons": [
+            {
+              "label": "OK",
+              "path": "0-1"
+            }
+          ]
+        }
       }
     },
     "0-1": {
@@ -35,23 +34,35 @@
       ],
       "input": {
         "type": "BUTTONS",
-        "data": [
-          {
-            "label": "Turn around and fight them off",
-            "value": "a"
-          },
-          {
-            "label": "Turn around and try to talk your way out",
-            "value": "b"
-          },
-          {
-            "label": "Try to outrun them",
-            "value": "c"
-          }
-        ]
-      },
-      "paths": {
-        "a": "0-2"
+        "props": {
+          "buttons": [
+            {
+              "label": "Turn around and fight them off",
+              "path": "0-1-0"
+            },
+            {
+              "label": "Turn around and try to talk your way out",
+              "path": "0-1-1"
+            },
+            {
+              "label": "Try to outrun them",
+              "path": "0-1-2"
+            }
+          ]
+        }
+      }
+    },
+    "0-1-0": {
+      "text": [
+        "You turn around and wait for them to come. Although you are unarmed and your two assailants have swords, you feel calm…almost eager. They approach you warily, and you can see the fear in their eyes. You leap at them.",
+        "Stop the flickering bar within the center."
+      ],
+      "input": {
+        "type": "TARGET",
+        "props": {
+          "successPath": "0-1-0-0",
+          "failurePath": "0-1-0-1"
+        }
       }
     },
     "x": {
@@ -60,7 +71,7 @@
       ],
       "input": {
         "type": "BUTTONS",
-        "data": [
+        "props": [
           {
             "label": ">",
             "value": "a"
@@ -75,7 +86,7 @@
       "text": "You concentrate and an old memory surfaces. You are in school and the teacher has separated the students into different tiers according to intelligence. You can’t remember what tier you were placed in but you must have been in…",
       "input": {
         "type": "BUTTONS",
-        "data": [
+        "props": [
           {
             "label": ">",
             "value": "a"

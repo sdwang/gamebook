@@ -15,12 +15,13 @@ class App extends React.Component {
   renderCard = () => {
     const { currentCardId } = this.state;
     const currentCard = sifangwu.cards[currentCardId];
-    const { text, input, paths } = currentCard;
+    const { text, input } = currentCard;
 
     return (
       <div>
         { text.map((str, i) => <div key={ i }>{ str }</div>)}
-        { input.type === 'BUTTONS' && input.data.map((button, i) => <button key={ i } onClick={ () => this.setState({ currentCardId: paths[button.value] })}>{button.label}</button>)}
+        { input.type === 'BUTTONS' && input.props.buttons.map((button, i) => <button key={ i } onClick={ () => this.setState({ currentCardId: button.path })}>{button.label}</button>)}
+        { input.type === 'TARGET' && <Target { ...input.props } />}
       </div>
     );
   }
@@ -29,7 +30,6 @@ class App extends React.Component {
     return (
       <div className="App">
         { this.renderCard() }
-        <Target/>
       </div>
     );
   }
