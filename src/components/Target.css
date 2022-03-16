@@ -1,6 +1,21 @@
+.target {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.cells {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 80vw;
+  max-width: 1000px;
+}
+
 .cell {
-  height: 10px;
-  width: 5px;
+  height: 30px;
+  width: 15px;
   background-color: aqua;
 }
 

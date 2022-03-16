@@ -8,6 +8,19 @@ function Cell({ position, count, isSuccessfulCell }) {
   );
 }
 
+function Cells({
+  max,
+  count,
+  successMin,
+  successMax
+}) {
+  return (
+    <div className='cells'>
+      { Array.from(Array(max + 1).keys()).map(position => <Cell key={ position } position={ position } count={ count } isSuccessfulCell={ position >= successMin && position <= successMax }/>) }
+    </div>
+  )
+}
+
 class Target extends React.Component {
   constructor(props) {
     super(props);
@@ -31,7 +44,7 @@ class Target extends React.Component {
       } else {
         this.setState({ count: count - 1 });
       }
-    }, 100);
+    }, 50);
   }
 
   stopCounter = () => {
@@ -44,9 +57,13 @@ class Target extends React.Component {
     const { count, isCounting } = this.state;
     const isSuccess = count >= successMin && count <= successMax;
     return (
-      <div>
-        <div>{ count }</div>
-        { Array.from(Array(max + 1).keys()).map(position => <Cell key={ position } position={ position } count={ count } isSuccessfulCell={ position >= successMin && position <= successMax }/>) }
+      <div className='target'>
+        <Cells
+          max={ max }
+          count={ count }
+          successMin={ successMin }
+          successMax={ successMax }
+        />
         {
           !isCounting && isSuccess && <div>Success!</div>
         }
@@ -75,9 +92,9 @@ Target.propTypes = {
 
 Target.defaultProps = {
   min: 0,
-  max: 10,
-  successMin: 4,
-  successMax: 6,
+  max: 30,
+  successMin: 13,
+  successMax: 17,
   next: () => { console.error('Missing next function prop'); }
 }
 
