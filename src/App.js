@@ -12,10 +12,6 @@ class App extends React.Component {
     }
   }
 
-  static getDerivedStateFromProps(props, state) {
-
-  }
-
   renderCard = () => {
     const { currentCardId } = this.state;
     const currentCard = sifangwu.cards[currentCardId];
@@ -23,8 +19,8 @@ class App extends React.Component {
 
     return (
       <div>
-        { text.map(str => <div>{ str }</div>)}
-        { input.type === 'BUTTONS' && input.data.map(button => <button onClick={ () => this.setState({ currentCardId: paths[button.value] })}>{button.label}</button>)}
+        { text.map((str, i) => <div key={ i }>{ str }</div>)}
+        { input.type === 'BUTTONS' && input.data.map((button, i) => <button key={ i } onClick={ () => this.setState({ currentCardId: paths[button.value] })}>{button.label}</button>)}
       </div>
     );
   }
