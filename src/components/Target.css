@@ -1,0 +1,13 @@
+.cell {
+  height: 10px;
+  width: 5px;
+  background-color: aqua;
+}
+
+.cell-successful {
+  background-color: orange;
+}
+
+.cell-current {
+  background-color: red;
+}

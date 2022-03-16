@@ -1,5 +1,12 @@
 import React from "react";
 import PropTypes from 'prop-types';
+import './Target.css';
+
+function Cell({ position, count, isSuccessfulCell }) {
+  return (
+    <div className={ 'cell ' + (position === count ? 'cell-current' : (isSuccessfulCell ? 'cell-successful' : ''))}/>
+  );
+}
 
 class Target extends React.Component {
   constructor(props) {
@@ -33,12 +40,13 @@ class Target extends React.Component {
   }
 
   render() {
-    const { next, successMin, successMax, successPath, failurePath } = this.props;
+    const { next, successMin, successMax, successPath, failurePath, max } = this.props;
     const { count, isCounting } = this.state;
     const isSuccess = count >= successMin && count <= successMax;
     return (
       <div>
         <div>{ count }</div>
+        { Array.from(Array(max + 1).keys()).map(position => <Cell key={ position } position={ position } count={ count } isSuccessfulCell={ position >= successMin && position <= successMax }/>) }
         {
           !isCounting && isSuccess && <div>Success!</div>
         }
