@@ -95,6 +95,33 @@
           ]
         }
       }
+    },
+    "0-1-0-1": {
+      "text": [
+        "You disarm the first swordsman and cut him down with his own blade. The second attacker slashes at you, but you easily deflect his strikes. You quickly see an opening in his defenses, and drive your new sword into his heart."
+      ],
+      "input": {
+        "type": "BUTTONS",
+        "props": {
+          "buttons": [
+            {
+              "label": "Examine the attackers",
+              "path": "0-2"
+            }
+          ]
+        }
+      }
+    },
+    "0-2": {
+      "text": [
+        "The first thing you notice is that their faces have been altered: grooves and cavities have been etched into their skin. Their eye sockets have sunken in while the cheekbones have been pushed forward, the bones forming two embossed runes that protruded through skin and flesh: a teardrop underneath the left eye and a flame underneath the right eye. The bones on the nose bridge were twisted into spikes that penetrated through the skin. The muscles and skin around the mouth were widened, revealing a long row of razor-sharp teeth. Someone had used a magical brush on their faces, molding them into a piece of art. You don’t know how you know this."
+      ],
+      "input": {
+        "type": "BUTTONS",
+        "props": {
+          "buttons": []
+        }
+      }
     }
   }
 }
