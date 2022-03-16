@@ -21,9 +21,7 @@ class App extends React.Component {
 
     return (
       <div>
-        <span>
-          {text}
-        </span>
+        { text.map(str => <div>{ str }</div>)}
         { input.type === 'BUTTONS' && input.data.map(button => <button onClick={ () => this.setState({ currentCardId: paths[button.value] })}>{button.label}</button>)}
       </div>
     );
