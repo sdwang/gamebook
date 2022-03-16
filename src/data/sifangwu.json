@@ -1,14 +1,23 @@
 {
   "startingStats": {
-    "magicTome": 1,
-    "pride": 0,
-    "humility": 0,
-    "violence": 0,
-    "peace": 0,
-    "love": 0,
-    "hate": 0,
-    "friends": 0,
-    "enemies": 0
+    "items": {
+      "magicTome": {
+        "name": "Old Tome",
+        "quantity": 1
+      }
+    },
+    "attributes": {
+      "pride": 0,
+      "humility": 0,
+      "violence": 0,
+      "peace": 0,
+      "love": 0,
+      "hate": 0
+    },
+    "social": {
+      "friends": 0,
+      "enemies": 0
+    }
   },
   "cards": {
     "0": {
