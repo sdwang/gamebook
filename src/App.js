@@ -3,6 +3,7 @@ import './App.css';
 import Target from './components/Target';
 import Buttons from './components/Buttons';
 import add from './utils/add';
+import increment from './utils/increment';
 import sifangwu from './data/sifangwu.json';
 
 class App extends React.Component {
@@ -23,6 +24,8 @@ class App extends React.Component {
     statActions.forEach(action => {
       if (action.type === 'ADD') {
         add(stats, action.path, action.item);
+      } else if (action.type === 'INCREMENT') {
+        increment(stats, action.path);
       }
     });
     console.log(stats);

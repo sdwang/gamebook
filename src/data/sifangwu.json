@@ -53,15 +53,33 @@
           "buttons": [
             {
               "label": "Turn around and fight them off",
-              "path": "0-1-0"
+              "path": "0-1-0",
+              "statActions": [
+                {
+                  "type": "INCREMENT",
+                  "path": ["attributes", "violence"]
+                }
+              ]
             },
             {
               "label": "Turn around and try to talk your way out",
-              "path": "0-1-1"
+              "path": "0-1-1",
+              "statActions": [
+                {
+                  "type": "INCREMENT",
+                  "path": ["attributes", "peace"]
+                }
+              ]
             },
             {
               "label": "Try to outrun them",
-              "path": "0-1-2"
+              "path": "0-1-2",
+              "statActions": [
+                {
+                  "type": "INCREMENT",
+                  "path": ["attributes", "humility"]
+                }
+              ]
             }
           ]
         }
