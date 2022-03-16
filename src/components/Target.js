@@ -2,9 +2,19 @@ import React from "react";
 import PropTypes from 'prop-types';
 import './Target.css';
 
-function Cell({ position, count, isSuccessfulCell }) {
+function Cell({ position, count, isSuccessfulCell, isStatBoostedCell }) {
+  const className = 'cell ' +
+    (
+      position === count ?
+        'cell-current' :
+        (
+          isSuccessfulCell ?
+            'cell-successful' :
+            isStatBoostedCell ? 'cell-stat-boosted': ''
+        )
+    );
   return (
-    <div className={ 'cell ' + (position === count ? 'cell-current' : (isSuccessfulCell ? 'cell-successful' : ''))}/>
+    <div className={ className }/>
   );
 }
 
@@ -12,11 +22,23 @@ function Cells({
   max,
   count,
   successMin,
-  successMax
+  successMax,
+  successMinCalc,
+  successMaxCalc
 }) {
   return (
     <div className='cells'>
-      { Array.from(Array(max + 1).keys()).map(position => <Cell key={ position } position={ position } count={ count } isSuccessfulCell={ position >= successMin && position <= successMax }/>) }
+      { Array.from(Array(max + 1).keys()).map(position => {
+        return (
+          <Cell
+            key={ position }
+            position={ position }
+            count={ count }
+            isSuccessfulCell={ position >= successMin && position <= successMax }
+            isStatBoostedCell={ position >= successMinCalc && position <= successMaxCalc }
+          />
+        );
+      }) }
     </div>
   )
 }
@@ -27,8 +49,31 @@ class Target extends React.Component {
     this.state = {
       count: 0,
       direction: 'up',
-      isCounting: true
+      isCounting: true,
+      hasStatBoost: false
     };
+  }
+
+  static getDerivedStateFromProps(props, state) {
+    const { statBoost, stats } = props;
+    let hasStatBoost = state.hasStatBoost;
+    if (statBoost) {
+      Object.keys(statBoost).forEach(key => {
+        console.log(key)
+        if (stats[key]) {
+          for (let i = 0; i < statBoost[key].length; i++) {
+            if (stats[key][statBoost[key][i]]) {
+              hasStatBoost = true;
+              break;
+            }
+          }
+        }
+      });
+    }
+    return {
+      ...state,
+      hasStatBoost
+    }
   }
 
   componentDidMount() {
@@ -54,8 +99,10 @@ class Target extends React.Component {
 
   render() {
     const { next, successMin, successMax, successPath, failurePath, max } = this.props;
-    const { count, isCounting } = this.state;
-    const isSuccess = count >= successMin && count <= successMax;
+    const { count, isCounting, hasStatBoost } = this.state;
+    const successMinCalc = hasStatBoost ? successMin - 1 : successMin;
+    const successMaxCalc = hasStatBoost ? successMax + 1 : successMax;
+    const isSuccess = count >= successMinCalc && count <= successMaxCalc;
     return (
       <div className='target'>
         <Cells
@@ -63,6 +110,8 @@ class Target extends React.Component {
           count={ count }
           successMin={ successMin }
           successMax={ successMax }
+          successMinCalc={ successMinCalc }
+          successMaxCalc={ successMaxCalc }
         />
         {
           !isCounting && isSuccess && <div>Success!</div>
@@ -87,7 +136,9 @@ Target.propTypes = {
   successMax: PropTypes.number,
   next: PropTypes.func.isRequired,
   successPath: PropTypes.string.isRequired,
-  failurePath: PropTypes.string.isRequired
+  failurePath: PropTypes.string.isRequired,
+  statBoost: PropTypes.object,
+  stats: PropTypes.object
 }
 
 Target.defaultProps = {

@@ -28,16 +28,16 @@ class App extends React.Component {
         increment(stats, action.path);
       }
     });
-    console.log(stats);
     this.setState({ stats });
   }
     
   restart = () => {
+    // TODO: Fix restart not resetting stats
     this.setState({ currentCardId: '0-0', stats: sifangwu.startingStats });
   }
 
   renderCard = () => {
-    const { currentCardId } = this.state;
+    const { currentCardId, stats } = this.state;
     const currentCard = sifangwu.cards[currentCardId];
     const { text, input } = currentCard;
 
@@ -45,7 +45,7 @@ class App extends React.Component {
       <div>
         { text.map((str, i) => <div key={ i }>{ str }</div>)}
         { input.type === 'BUTTONS' && <Buttons { ...input.props } next={ this.setNextCard } updateStats={ this.updateStats }/> }
-        { input.type === 'TARGET' && <Target { ...input.props } next={ this.setNextCard } updateStats={ this.updateStats }/> }
+        { input.type === 'TARGET' && <Target { ...input.props } next={ this.setNextCard } updateStats={ this.updateStats } stats={ stats }/> }
       </div>
     );
   }

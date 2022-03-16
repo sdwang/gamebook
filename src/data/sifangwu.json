@@ -149,7 +149,10 @@
         "type": "TARGET",
         "props": {
           "failurePath": "0-1-0-0-0",
-          "successPath": "0-1-0-1-1"
+          "successPath": "0-1-0-1-1",
+          "statBoost": {
+            "items": ["sword"]
+          }
         }
       }
     },

@@ -23,6 +23,10 @@
   background-color: orange;
 }
 
+.cell-stat-boosted {
+  background-color: rgb(255, 230, 0);
+}
+
 .cell-current {
   background-color: red;
 }
