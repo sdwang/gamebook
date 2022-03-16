@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import Target from './components/Target';
 import sifangwu from './data/sifangwu.json';
 
 class App extends React.Component {
@@ -32,6 +33,7 @@ class App extends React.Component {
     return (
       <div className="App">
         { this.renderCard() }
+        <Target/>
       </div>
     );
   }
