@@ -5,7 +5,8 @@ class Target extends React.Component {
     super(props);
     this.state = {
       count: 0,
-      direction: 'up'
+      direction: 'up',
+      isCounting: true
     };
   }
 
@@ -25,12 +26,29 @@ class Target extends React.Component {
     }, 100);
   }
 
+  stopCounter = () => {
+    clearInterval(this.counter);
+    this.setState({ isCounting: false });
+  }
+
   render() {
-    const { count } = this.state;
+    const { next, successMin, successMax } = this.props;
+    const { count, isCounting } = this.state;
+    const isSuccess = count >= successMin && count <= successMax;
     return (
       <div>
         <div>{ count }</div>
-        <button onClick={() => clearInterval(this.counter)}>Stop</button>
+        {
+          !isCounting && isSuccess && <div>Success!</div>
+        }
+        {
+          !isCounting && !isSuccess && <div>Failure</div>
+        }
+        {
+          isCounting ?
+            <button onClick={ this.stopCounter }>Stop</button>
+            : <button onClick={ next.bind(null, isSuccess) }>OK</button>
+        }
       </div>
     );
   }
@@ -40,7 +58,8 @@ Target.defaultProps = {
   min: 0,
   max: 10,
   successMin: 4,
-  successMax: 6
+  successMax: 6,
+  next: () => { console.error('Missing next function prop'); }
 }
 
 export default Target;
