@@ -21,7 +21,7 @@ class App extends React.Component {
       <div>
         { text.map((str, i) => <div key={ i }>{ str }</div>)}
         { input.type === 'BUTTONS' && input.props.buttons.map((button, i) => <button key={ i } onClick={ () => this.setState({ currentCardId: button.path })}>{button.label}</button>)}
-        { input.type === 'TARGET' && <Target { ...input.props } />}
+        { input.type === 'TARGET' && <Target { ...input.props } next={ nextCardId => { this.setState({ currentCardId: nextCardId })} }/>}
       </div>
     );
   }

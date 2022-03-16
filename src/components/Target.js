@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 
 class Target extends React.Component {
   constructor(props) {
@@ -32,7 +33,7 @@ class Target extends React.Component {
   }
 
   render() {
-    const { next, successMin, successMax } = this.props;
+    const { next, successMin, successMax, successPath, failurePath } = this.props;
     const { count, isCounting } = this.state;
     const isSuccess = count >= successMin && count <= successMax;
     return (
@@ -47,11 +48,21 @@ class Target extends React.Component {
         {
           isCounting ?
             <button onClick={ this.stopCounter }>Stop</button>
-            : <button onClick={ next.bind(null, isSuccess) }>OK</button>
+            : <button onClick={ next.bind(null, isSuccess ? successPath : failurePath) }>OK</button>
         }
       </div>
     );
   }
+}
+
+Target.propTypes = {
+  min: PropTypes.number,
+  max: PropTypes.number,
+  successMin: PropTypes.number,
+  successMax: PropTypes.number,
+  next: PropTypes.func.isRequired,
+  successPath: PropTypes.string.isRequired,
+  failurePath: PropTypes.string.isRequired
 }
 
 Target.defaultProps = {

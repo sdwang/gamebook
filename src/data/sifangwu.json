@@ -11,6 +11,12 @@
     "enemies": 0
   },
   "cards": {
+    "0": {
+      "text": [
+        "Game over"
+      ],
+      "input": {}
+    },
     "0-0": {
       "text": [
         "The sun is hot. The endless desert stretches endlessly. You are running and you don’t remember why. In your hands, you are holding a heavy tome. Its cracked, hide-bound cover is unnaturally cold, the only cold thing in this dusty landscape.",
@@ -21,7 +27,7 @@
         "props": {
           "buttons": [
             {
-              "label": "OK",
+              "label": "Keep running",
               "path": "0-1"
             }
           ]
@@ -30,7 +36,7 @@
     },
     "0-1": {
       "text": [
-        "What do you do?"
+        "Despite the suffocating heat muddying your thoughts, you tell yourself that you must come up with a plan."
       ],
       "input": {
         "type": "BUTTONS",
@@ -60,41 +66,25 @@
       "input": {
         "type": "TARGET",
         "props": {
-          "successPath": "0-1-0-0",
-          "failurePath": "0-1-0-1"
+          "failurePath": "0-1-0-0",
+          "successPath": "0-1-0-1"
         }
       }
     },
-    "x": {
+    "0-1-0-0": {
       "text": [
-        "You realize not only do you not remember why you were running, but you also don’t remember who you are. You don’t remember your name or your family and friends or where you were born. You don’t remember anything before the chase."
+        "You disarm the first swordsman, but the second one slashes you in the arm, cutting open an artery. The two attackers back away and watch you slowly bleed out and die."
       ],
       "input": {
         "type": "BUTTONS",
-        "props": [
-          {
-            "label": ">",
-            "value": "a"
-          }
-        ]
-      },
-      "paths": {
-        "a": "0-2"
-      }
-    },
-    "y": {
-      "text": "You concentrate and an old memory surfaces. You are in school and the teacher has separated the students into different tiers according to intelligence. You can’t remember what tier you were placed in but you must have been in…",
-      "input": {
-        "type": "BUTTONS",
-        "props": [
-          {
-            "label": ">",
-            "value": "a"
-          }
-        ]
-      },
-      "paths": {
-        "a": "0-2"
+        "props": {
+          "buttons": [
+            {
+              "label": "Time to die",
+              "path": "0"
+            }
+          ]
+        }
       }
     }
   }
