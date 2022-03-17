@@ -20,6 +20,20 @@
     }
   },
   "cards": {
+    "start": {
+      "text": [],
+      "input": {
+        "type": "BUTTONS",
+        "props": {
+          "buttons": [
+            {
+              "label": "Start",
+              "path": "0-0"
+            }
+          ]
+        }
+      }
+    },
     "0": {
       "text": [
         "Game over"
@@ -31,6 +45,7 @@
         "The sun is hot. The endless desert stretches endlessly. You are running and you don’t remember why. In your hands, you are holding a heavy tome. Its cracked, hide-bound cover is unnaturally cold, the only cold thing in this dusty landscape.",
         "Behind you, two men are running towards you with swords drawn. They look angry."
       ],
+      "audio": "brokenFragment",
       "input": {
         "type": "BUTTONS",
         "props": {

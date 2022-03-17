@@ -5,13 +5,37 @@ import Buttons from './components/Buttons';
 import add from './utils/add';
 import increment from './utils/increment';
 import sifangwu from './data/sifangwu.json';
+import bitLord from './assets/bitLord.m4a';
+import brokenFragment from './assets/brokenFragment.m4a';
+
+const music = {
+  bitLord,
+  brokenFragment
+};
 
 class App extends React.Component {
   constructor(props) {
     super(props);
+    this.audio = null;
     this.state = {
-      currentCardId: '0-0',
+      currentCardId: 'start',
       stats: sifangwu.startingStats
+    }
+  }
+
+  componentDidUpdate(_, prevState) {
+    const { currentCardId: prevCardId } = prevState;
+    const { currentCardId } = this.state;
+    const audioName = sifangwu.cards[currentCardId].audio;
+    if (prevCardId !== currentCardId && audioName && music[audioName]) {
+      if (this.audio) {
+        this.audio.pause();
+      }
+      this.audio = new Audio(music[audioName]);
+      this.audio.loop = true;
+      this.audio.addEventListener("canplaythrough", () => {
+        this.audio.play();
+      });
     }
   }
 
