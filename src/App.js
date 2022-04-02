@@ -5,13 +5,7 @@ import Buttons from './components/Buttons';
 import add from './utils/add';
 import increment from './utils/increment';
 import sifangwu from './data/sifangwu.json';
-import bitLord from './assets/bitLord.m4a';
-import brokenFragment from './assets/brokenFragment.m4a';
-
-const music = {
-  bitLord,
-  brokenFragment
-};
+import music from './assets/music';
 
 class App extends React.Component {
   constructor(props) {
